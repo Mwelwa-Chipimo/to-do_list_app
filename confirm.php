@@ -105,7 +105,7 @@ $mysqli->close();
         Welcome to CheckIt! <br>
         Are you ready to kick some tasks? <br>
         Then please confirm your email address by visiting the link below <br>
-        <a href=\"confirmEmail.php?email=".$param4."&confirmNum=".password_hash($param5, PASSWORD_DEFAULT)."\">here</a> ";
+        <a href=\"http://localhost:8888/to_do/confirmEmail.php?email=".$param4."&confirmNum=".password_hash($param5, PASSWORD_DEFAULT)."\">here</a> ";
                 $param->AltBody = 'This is the body in plain text for non-HTML mail clients';
                 $param->send();
                 echo 'Message has been sent';

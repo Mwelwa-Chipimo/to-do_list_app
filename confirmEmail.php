@@ -24,7 +24,7 @@ $sql = "SELECT confirmNum FROM users WHERE email = ?";
                                     $param_confirmNum = $confirmNum;
                                     $stmt->execute();
                                     $stmt->store_result();
-                                    echo "<html>Thanks for confirming your details, you can now <a href=\"http://class/userProfilesApp/login.php\"> login</a></html>";        
+                                    echo "<html>Thanks for confirming your details, you can now <a href=\"signin.php\"> login</a></html>";        
                                 }              
                         }
                 }else{
