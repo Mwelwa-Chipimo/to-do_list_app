@@ -154,57 +154,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <!--------------------------   N A V B A R   ------------------------------->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#"><strong>CheckIt</strong></a>
-    
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+        <a class="navbar-brand" href="#">CheckIt</a>
+       
         <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
-        </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-success my-2 my-sm-0" href="#" >Sign In</button>
-        </form>
-    </div>
+            <li class="nav-item active">
+                <a class="nav-link" href="signin.php">Login
+                <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            </ul>
+        </div>
     </nav>
 
     <!-----------------    E N D   O F   N A V B A R   -------------------->
 
     <main>
 
-    <div class="container"> <!-- flexbox container -->
+    <div class="container my-auto"> <!-- flexbox container -->
     <div class="row">
-        <div class="col-md-6 mx-auto my-auto mb-5">
+
+        <div class="col-sm mx-auto my-auto mb-5">
             <h1><strong>Welcome to the CheckIt</strong></h1>
             <h3>A simple productivity tool to keep your life organised.</h3>
         </div>
 
 
-        <div class="col-md-6 mb-5 mx-auto my-auto border border-primary">
+        <div class="col-sm mb-5 mx-auto my-auto">
 
          <!---------------------- SIGN UP FORM ----------------------->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="border col-lg-10 mx-auto border border-primary">
+        <div class="col-lg-10 mx-auto">
 
             <!-------------- First Name & Surname ----------------->
             <div class="form-group">
             <h2>Sign Up</h2>
             <p>Please fill this form to create an account.</p>
                 <div class="row">
-                    <div class="col-md-6 <?php echo (!empty($firstname_err)) ? 'has-error' : ''; ?>">
+                    <div class="col-md <?php echo (!empty($firstname_err)) ? 'has-error' : ''; ?>">
                         <label for="firstname">First Name</label>
                         <input type="text" name="firstname" class="form-control" value="<?php echo $firsname; ?>" placeholder="First Name" id="firstname">
                         <span class="help-block"><?php echo $firstname_err ?></span>
                     </div>
-                    <div class="col-md-6 <?php echo (!empty($surname_err)) ? 'has-error' : ''; ?>">
+                    <div class="col-md <?php echo (!empty($surname_err)) ? 'has-error' : ''; ?>">
                         <label for="surname">Surname</label>
                         <input type="text" name="surname" class="form-control" value="<?php echo $surname; ?>" placeholder="Surname" id="surname">
                         <span class="help-block"><?php echo $surname_err ?></span>
@@ -215,7 +209,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <!------------------------ Email -------------------------->
             <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                 <label for="email">Email address</label>
-                <input type="email" name="email" class="form-control" aria-describedby="emailHelp" value="<?php echo $email; ?>" id="email">
+                <input type="email" name="email" class="form-control" placeholder="name@example.com" aria-describedby="emailHelp" value="<?php echo $email; ?>" id="email">
                 <small id="emailHelp" class="form-text text-muted">Use your email to login.</small>
                 <span class="help-block"><?php echo $email_err ?></span>
             </div>
@@ -237,7 +231,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <!---------------------- Submit -------------------------->
             <button type="submit" name="submit" class="btn btn-block btn-primary" value="submit"><strong>Sign up for CheckIt</strong></button>
             <div class="list-inline">
-                <p>Already have an account?<a href="sign_in.php"> Sign In</a></p>
+                <p>Already have an account?<a href="signin.php"> Sign In</a></p>
             </div>
         </div>
         </form>

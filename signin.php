@@ -4,7 +4,7 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to index page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: task_list.php");
+    header("location: index.php");
     //if you reach here output message and terminate the script (msg none supplied)
     exit;
 }
@@ -13,8 +13,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 require_once "connect.php";
  
 // Define variables and initialize with empty values
-$username = $password = $email = "";
-$username_err = $password_err = $email_err = "";
+$password = $email = "";
+$password_err = $email_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -50,10 +50,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Store result
-                /*call store_result() for prepared statements that use
-                  SELECT, SHOW, DESCRIBE, EXPLAIN that you want buffered
-                  by the client, result stored on client for faster access*/
+                
                 $stmt->store_result();
+                //var_dump($stmt);
                 
                 // Check if username exists, if yes then verify password
                 if($stmt->num_rows == 1){                    
@@ -74,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                                    
                             
                             // Redirect user to index page
-                            header("location: task_list.php");
+                            header("location: index.php");
                         } else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
@@ -87,12 +86,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
-        }
-        
+        }      
         // Close statement
         $stmt->close();
-    }
-    
+    }   
     // Close connection
     $mysqli->close();
 }
@@ -103,13 +100,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style type="text/css">
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
 <body>
+
+
+    <!--------------------------   N A V B A R   ------------------------------->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+        <a class="navbar-brand" href="register.php">CheckIt</a>
+       
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Login
+                <span class="sr-only">(current)</span>
+                </a>
+            </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <!-----------------    E N D   O F   N A V B A R   -------------------->
+
     <div class="wrapper">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
